@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>
+				学生选课系统
+			</h3>
+			<h3>
+				成绩查询
+			</h3>
+					<ul>
+						<li>选课</li>
+					 	<li><a href="CourseList.html">学生选课</a></li>
+						 <li>个人中心</li>
+						<li><a href="#">成绩查询</a></li> 
+					</ul>
+					输入学期
+					<form>
+						<input type="text" /> <button type="submit">查找</button>
+					</form>
+					
+					<table id="tablelist">
+						<thead>
+							<tr>
+								<th>课程编号</th>
+								<th>课程名称</th>
+								<th>成绩</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1-1</td>
+								<td>大学英语1</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>2-1
+								</td>
+								<td>
+									大学英语2
+								</td>
+								<td>
+									76
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			<a id="modal-971411" href="#modal-container-971411" role="button" data-toggle="modal">触发遮罩窗体</a>
+			<div id="modal-container-971411" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					 <button type="button" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">
+						标题栏
+					</h3>
+				</div>
+					<p>
+						保存成功
+					</p>
+					 <button data-dismiss="modal" aria-hidden="true">关闭</button> <button>保存设置</button>
+		
+</body>
+</html>

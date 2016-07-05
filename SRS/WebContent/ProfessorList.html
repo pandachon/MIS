@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>教授列表</title>
+</head>
+<body>
+			<h3>学生选课系统</h3>
+			<h3>后台管理</h3>
+					<ul>
+						<li>课程管理</li>
+						<li><a href="#">课程列表</a></li>
+						<li><a href="SectionList.html">选课列表</a></li>
+						 <li>教授管理</li>
+						<li><a href="#">教授列表</a></li>
+					</ul>
+					输入姓名
+					<form>
+						<input type="text" /> <button type="submit">查找</button>
+					</form>
+					
+					<table id="tablelist">
+						<thead>
+							<tr>
+								<th>教师编号</th>
+								<th>教师姓名</th>
+								<th>所属学院</th>
+								<th>职称</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+					 			<td>Default</td> 
+								<td>Default</td> 
+							</tr>
+						</tbody>
+					</table>
+					<h3>添加教授</h3>
+					<form>
+							 <label class="control-label" for="inputEmail">课程名称</label>
+								<input id="inputEmail" type="text" />
+							 <label for="inputPassword">学分</label>
+								<input id="inputPassword" type="password" />
+
+					</form>
+					<br/>
+
+						 <button type="button">添加</button>
+			 <a id="modal-971411" href="#modal-container-971411" role="button" data-toggle="modal">触发遮罩窗体</a>
+			
+			<div id="modal-container-971411" aria-labelledby="myModalLabel" aria-hidden="true">
+					 <button type="button" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">标题栏</h3>
+				</div>
+					<p>保存成功</p>
+					 <button data-dismiss="modal" aria-hidden="true">关闭</button> <button>保存设置</button>
+
+<script type="text/javascript">
+$(document).ready(function() {	
+	$.getJSON("../ProfessorList",function(jsonData) {
+	 var html="";
+	for (var i = 0; i < jsonData.rows.length; i++) {
+		if(i%3==0){
+			html+="<tr class=\"warning\">";
+		}else if(i%3==1){
+			html+="<tr class=\"success\">";
+		}else if(i%3==2){
+			html+="<tr class=\"info\">";
+		}
+		html+="<td>"+jsonData.rows[i].ssn+"</td>";
+		html+="<td>"+jsonData.rows[i].name+"</td>";
+		html+="<td>"+jsonData.rows[i].Dept+"</td>";
+		html+="<td>"+jsonData.rows[i].tTitle+"</td>";
+		html+="<td><a>删除</a>/<a>修改</a></td></tr>";
+	} 
+	$("#tablelist tbody tr").remove();
+	$("#tablelist tbody").append(html); 
+			}); 
+		});
+		
+</script>
+</body>
+</html>

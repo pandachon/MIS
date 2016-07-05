@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+			<h3>
+				学生选课系统
+			</h3>
+			<h3 class="text-center">
+				后台管理
+			</h3>
+					<ul>
+						<li>课程管理</li>
+						<li><a href="#">课程列表</a></li>
+						<li><a href="SectionList.html">选课列表</a></li>
+						 <li>教授管理</li>
+						<li><a href="#">教授列表</a></li>
+					</ul>
+					输入学期
+					<form>
+						<input  type="text" /> <button type="submit">查找</button>
+					</form>
+					
+					<table id="tablelist">
+						<thead>
+							<tr>
+								<th>课程编号</th>
+								<th>详情介绍</th>
+								<th>课程选课情况</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+						</tbody>
+					</table>
+					<h3>
+						添加选课
+					</h3>
+					<form>
+							 <label for="inputEmail">课程名称</label>
+								<input id="inputEmail" type="text" />
+							 <label for="inputPassword">学分</label>
+								<input id="inputPassword" type="password" />
+					</form>
+					<br/>
+				
+						 <button type="button">添加</button>
+			 <a id="modal-971411" href="#modal-container-971411" role="button" data-toggle="modal">触发遮罩窗体</a>
+			
+			<div id="modal-container-971411" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					 <button type="button" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">
+						标题栏
+					</h3>
+				</div>
+					<p>
+						保存成功
+					</p>
+					 <button data-dismiss="modal" aria-hidden="true">关闭</button> <button>保存设置</button>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {	
+	$.getJSON("../scheduleOfClassServlet",function(jsonData) {
+	var html="";
+	for (var i = 0; i < jsonData.data.length; i++) {
+		if(i%3==0){
+			html+="<tr class=\"warning\">";
+		}else if(i%3==1){
+			html+="<tr class=\"success\">";
+		}else if(i%3==2){
+			html+="<tr class=\"info\">";
+		}
+		html+="<td>"+jsonData.data[i].id+"</td>";
+		html+="<td>"+jsonData.data[i].text+"</td>";
+		html+="<td>详情</td>"; 
+		html+="<td><a>删除</a>/<a >修改</a></td></tr> "; 
+	} 
+	$("#tablelist tbody tr").remove(); 
+	$("#tablelist tbody").append(html);
+			}); 
+		});		
+</script>
+</body>
+</html>
